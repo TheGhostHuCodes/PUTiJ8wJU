@@ -14,4 +14,11 @@ public class Account {
     public boolean hasPositiveBalance() { return this.balance > 0; }
 
     public int getBalance() { return balance; }
+
+    public void withdraw(int value) throws InsufficientFundsException {
+        if (this.balance < value) {
+            throw new InsufficientFundsException();
+        }
+        this.balance -= value;
+    }
 }

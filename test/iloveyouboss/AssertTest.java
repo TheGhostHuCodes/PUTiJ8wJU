@@ -3,6 +3,7 @@ package iloveyouboss;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.*;
+import org.junit.rules.ExpectedException;
 
 public class AssertTest {
 
@@ -21,8 +22,33 @@ public class AssertTest {
 
     @Test
     public void depositIncreasesBalance() {
-        int initialBalance = account.getBalance();
         account.deposit(100);
-        assertTrue(account.getBalance() > initialBalance);
+        assertThat(account.getBalance(), equalTo(100));
+    }
+
+    @Test(expected = InsufficientFundsException.class)
+    public void throwsWhenWithdrawingTooMuchSimple()
+        throws InsufficientFundsException {
+
+        account.withdraw(100);
+    }
+
+    @Test
+    public void throwsWhenWithdrawingTooMuchOld() {
+        try {
+            account.withdraw(100);
+            fail();
+        } catch (InsufficientFundsException expected) {
+        }
+    }
+
+    @Rule public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void throwsWhenWithdrawingTooMuchNew()
+        throws InsufficientFundsException {
+        thrown.expect(InsufficientFundsException.class);
+
+        account.withdraw(100);
     }
 }
