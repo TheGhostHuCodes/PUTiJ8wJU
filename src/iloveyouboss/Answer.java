@@ -1,17 +1,25 @@
 package iloveyouboss;
 
 public class Answer {
-    private Question question;
+    private final Question question;
     private Bool response;
+    private int percentage;
 
     public Answer(Question question, Bool response) {
         this.question = question;
         this.response = response;
     }
 
-    public String getQuestionText() { return question.getQuestion(); }
+    public Answer(PercentileQuestion question, int percentage) {
+        this.question = question;
+        this.percentage = percentage;
+    }
+
+    public String getQuestionText() { return question.getText(); }
 
     public boolean match(Answer answer) {
         return answer.response == this.response;
     }
+
+    public Question getQuestion() { return question; }
 }

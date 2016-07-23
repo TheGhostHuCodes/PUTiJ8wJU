@@ -1,14 +1,15 @@
 package iloveyouboss;
 
-public class BooleanQuestion implements Question {
+public class PercentileQuestion implements Question {
     private int id;
-    private final String text;
+    private String text;
+    private String[] strings;
 
-    public BooleanQuestion(int id, String text) {
+    public PercentileQuestion(int id, String text, String[] strings) {
         this.id = id;
         this.text = text;
+        this.strings = strings;
     }
-    public BooleanQuestion(String text) { this.text = text; }
 
     @Override
     public int getId() {

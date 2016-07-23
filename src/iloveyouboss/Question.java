@@ -1,6 +1,6 @@
 package iloveyouboss;
 
 public interface Question {
-    String getQuestion();
+    int getId();
     String getText();
 }
