@@ -9,5 +9,9 @@ public class BooleanQuestion implements Question {
         this.question = question;
     }
 
+    public BooleanQuestion(String question) { this.question = question; }
+
     public String getQuestion() { return question; }
+
+    public String getText() { return question; }
 }
