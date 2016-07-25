@@ -10,7 +10,7 @@ public class Answer {
         this.response = response;
     }
 
-    public Answer(PercentileQuestion question, int percentage) {
+    public Answer(Question question, int percentage) {
         this.question = question;
         this.percentage = percentage;
     }
